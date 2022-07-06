@@ -76,7 +76,7 @@ ui:
   replicas: 1
   image:
     repository: skywalking.docker.scarf.sh/apache/skywalking-ui
-    tag: null  # Must be set explicitly
+    tag: 9.1.0  # Must be set explicitly
     pullPolicy: IfNotPresent
   # podAnnotations:
   #   example: oap-foo
