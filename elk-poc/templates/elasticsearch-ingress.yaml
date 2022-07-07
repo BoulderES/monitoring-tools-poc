@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+  name: elasticsearch-poc-ingress
+spec:
+  rules:
+  - host: elasticsearch.rancher-poc.unicc.org
+    http:
+      paths:
+      - backend:
+          service:
+            name: elasticsearch-poc-es-http
+            port:
+              number: 9200
+        path: /
+        pathType: ImplementationSpecific
