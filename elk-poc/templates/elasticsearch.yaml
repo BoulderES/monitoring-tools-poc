@@ -16,7 +16,6 @@ spec:
       # node.master: true
       node.roles: ["master"]
       xpack.ml.enabled: true
-      node.remote_cluster_client: false
     volumeClaimTemplates:
     - metadata:
         name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
@@ -37,7 +36,6 @@ spec:
       # node.ml: true
       # node.transform: true
       node.roles: ["data", "ingest", "ml", "transform"]
-      node.remote_cluster_client: false
     volumeClaimTemplates:
     - metadata:
         name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
