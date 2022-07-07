@@ -4,7 +4,7 @@ metadata:
   name: kibana-poc
 spec:
   version: 8.3.1
-  count: 2
+  count: 5
   elasticsearchRef:
     name: elasticsearch-poc
   http:
