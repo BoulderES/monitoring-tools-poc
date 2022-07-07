@@ -2,7 +2,7 @@
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
-  name: fleet-server
+  name: fleet-server-poc
 spec:
   version: 8.3.2
   kibanaRef:
