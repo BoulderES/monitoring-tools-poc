@@ -8,14 +8,6 @@ spec:
     tls:
       subjectAltNames:
       - dns: elasticsearch.rancher-poc.unicc.org
-  http:
-    service:
-      spec:
-        # expose this cluster Service with a ClusterIP and add public ingress for access
-        type: ClusterIP
-    tls:
-      certificate:
-        secretName: wildcard-cert-tls
   nodeSets:
   - name: master-nodes
     count: 3
