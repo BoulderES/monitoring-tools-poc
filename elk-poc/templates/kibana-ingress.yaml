@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+  name: kibana-poc-ingress
+spec:
+  rules:
+  - host: kibana.rancher-poc.unicc.org
+    http:
+      paths:
+      - backend:
+          serviceName: kibana-poc
+          servicePort: 5601
+        path: /
