@@ -59,10 +59,10 @@ spec:
             value: -Xms12g -Xmx12g
           resources:
             requests:
-              memory: 14Gi
+              memory: 16Gi
               cpu: 4
             limits:
-              memory: 14Gi
+              memory: 16Gi
     config:
       node.roles: ["data"]
     volumeClaimTemplates:
