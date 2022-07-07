@@ -27,7 +27,7 @@ spec:
           resources:
             requests:
               memory: 4Gi
-              cpu: 4
+              cpu: 2
             limits:
               memory: 4Gi
     config:
@@ -60,7 +60,7 @@ spec:
           resources:
             requests:
               memory: 14Gi
-              cpu: 8
+              cpu: 4
             limits:
               memory: 14Gi
     config:
