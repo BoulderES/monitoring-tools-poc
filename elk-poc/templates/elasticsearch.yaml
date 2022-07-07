@@ -8,37 +8,36 @@ spec:
     tls:
       subjectAltNames:
       - dns: elasticsearch.rancher-poc.unicc.org
+  http:
+    service:
+      spec:
+        # expose this cluster Service with a ClusterIP and add public ingress for access
+        type: ClusterIP
+    tls:
+      certificate:
+        secretName: wildcard-cert-tls
   nodeSets:
-  - name: masters
+  - name: master-nodes
     count: 3
     config:
-      # On Elasticsearch versions before 7.9.0, replace the node.roles configuration with the following:
-      # node.master: true
       node.roles: ["master"]
-      xpack.ml.enabled: true
     volumeClaimTemplates:
     - metadata:
-        name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
+        name: elasticsearch-data
       spec:
         accessModes:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 1Gi
+            storage: 2Gi
         storageClassName: longhorn
-  - name: data
-    count: 4
+  - name: data-nodes
+    count: 10
     config:
-      # On Elasticsearch versions before 7.9.0, replace the node.roles configuration with the following:
-      # node.master: false
-      # node.data: true
-      # node.ingest: true
-      # node.ml: true
-      # node.transform: true
-      node.roles: ["data", "ingest", "ml", "transform"]
+      node.roles: ["data"]
     volumeClaimTemplates:
     - metadata:
-        name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
+        name: elasticsearch-data
       spec:
         accessModes:
         - ReadWriteOnce
