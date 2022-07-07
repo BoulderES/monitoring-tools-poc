@@ -2,7 +2,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.9.1
+    controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -752,11 +752,6 @@ spec:
                 - standalone
                 - fleet
                 type: string
-              revisionHistoryLimit:
-                description: RevisionHistoryLimit is the number of revisions to retain
-                  to allow rollback in the underlying DaemonSet or Deployment.
-                format: int32
-                type: integer
               secureSettings:
                 description: SecureSettings is a list of references to Kubernetes
                   Secrets containing sensitive configuration options for the Agent.
@@ -857,7 +852,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.9.1
+    controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -1408,11 +1403,6 @@ spec:
                   pods.
                 type: object
                 x-kubernetes-preserve-unknown-fields: true
-              revisionHistoryLimit:
-                description: RevisionHistoryLimit is the number of revisions to retain
-                  to allow rollback in the underlying Deployment.
-                format: int32
-                type: integer
               secureSettings:
                 description: SecureSettings is a list of references to Kubernetes
                   secrets containing sensitive configuration options for APM Server.
@@ -2078,7 +2068,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.9.1
+    controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -2369,11 +2359,6 @@ spec:
                       is used.
                     type: string
                 type: object
-              revisionHistoryLimit:
-                description: RevisionHistoryLimit is the number of revisions to retain
-                  to allow rollback in the underlying DaemonSet or Deployment.
-                format: int32
-                type: integer
               secureSettings:
                 description: SecureSettings is a list of references to Kubernetes
                   Secrets containing sensitive configuration options for the Beat.
@@ -2475,7 +2460,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.9.1
+    controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -3006,11 +2991,6 @@ spec:
                   Server pods
                 type: object
                 x-kubernetes-preserve-unknown-fields: true
-              revisionHistoryLimit:
-                description: RevisionHistoryLimit is the number of revisions to retain
-                  to allow rollback in the underlying Deployment.
-                format: int32
-                type: integer
               serviceAccountName:
                 description: ServiceAccountName is used to check access from the current
                   resource to a resource (for ex. Elasticsearch) in a different namespace.
@@ -3073,7 +3053,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.9.1
+    controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -3791,7 +3771,6 @@ spec:
                                 - kind
                                 - name
                                 type: object
-                                x-kubernetes-map-type: atomic
                               dataSourceRef:
                                 description: 'dataSourceRef specifies the object from
                                   which to populate the volume with data, if a non-empty
@@ -3836,7 +3815,6 @@ spec:
                                 - kind
                                 - name
                                 type: object
-                                x-kubernetes-map-type: atomic
                               resources:
                                 description: 'resources represents the minimum resources
                                   the volume should have. If RecoverVolumeExpansionFailure
@@ -3918,7 +3896,6 @@ spec:
                                       The requirements are ANDed.
                                     type: object
                                 type: object
-                                x-kubernetes-map-type: atomic
                               storageClassName:
                                 description: 'storageClassName is the name of the
                                   StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1'
@@ -4138,7 +4115,6 @@ spec:
                               only "value". The requirements are ANDed.
                             type: object
                         type: object
-                        x-kubernetes-map-type: atomic
                     type: object
                 type: object
               remoteClusters:
@@ -4178,11 +4154,6 @@ spec:
                   - name
                   type: object
                 type: array
-              revisionHistoryLimit:
-                description: RevisionHistoryLimit is the number of revisions to retain
-                  to allow rollback in the underlying StatefulSets.
-                format: int32
-                type: integer
               secureSettings:
                 description: SecureSettings is a list of references to Kubernetes
                   secrets containing sensitive configuration options for Elasticsearch.
@@ -5439,7 +5410,6 @@ spec:
                                 - kind
                                 - name
                                 type: object
-                                x-kubernetes-map-type: atomic
                               dataSourceRef:
                                 description: 'dataSourceRef specifies the object from
                                   which to populate the volume with data, if a non-empty
@@ -5484,7 +5454,6 @@ spec:
                                 - kind
                                 - name
                                 type: object
-                                x-kubernetes-map-type: atomic
                               resources:
                                 description: 'resources represents the minimum resources
                                   the volume should have. If RecoverVolumeExpansionFailure
@@ -5566,7 +5535,6 @@ spec:
                                       The requirements are ANDed.
                                     type: object
                                 type: object
-                                x-kubernetes-map-type: atomic
                               storageClassName:
                                 description: 'storageClassName is the name of the
                                   StorageClass required by the claim. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#class-1'
@@ -5788,7 +5756,6 @@ spec:
                               only "value". The requirements are ANDed.
                             type: object
                         type: object
-                        x-kubernetes-map-type: atomic
                     type: object
                 type: object
               secureSettings:
@@ -5892,7 +5859,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.9.1
+    controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -6422,11 +6389,6 @@ spec:
                   Search pods.
                 type: object
                 x-kubernetes-preserve-unknown-fields: true
-              revisionHistoryLimit:
-                description: RevisionHistoryLimit is the number of revisions to retain
-                  to allow rollback in the underlying Deployment.
-                format: int32
-                type: integer
               serviceAccountName:
                 description: ServiceAccountName is used to check access from the current
                   resource to a resource (for ex. Elasticsearch) in a different namespace.
@@ -7047,7 +7009,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   annotations:
-    controller-gen.kubebuilder.io/version: v0.9.1
+    controller-gen.kubebuilder.io/version: v0.9.0
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: '{{ .Release.Name }}'
@@ -7698,11 +7660,6 @@ spec:
                   affinity rules, resource requests, and so on) for the Kibana pods
                 type: object
                 x-kubernetes-preserve-unknown-fields: true
-              revisionHistoryLimit:
-                description: RevisionHistoryLimit is the number of revisions to retain
-                  to allow rollback in the underlying Deployment.
-                format: int32
-                type: integer
               secureSettings:
                 description: SecureSettings is a list of references to Kubernetes
                   secrets containing sensitive configuration options for Kibana.
