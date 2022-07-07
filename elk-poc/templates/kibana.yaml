@@ -7,3 +7,7 @@ spec:
   count: 2
   elasticsearchRef:
     name: elasticsearch-poc
+  http:
+    service:
+        spec:
+            type: LoadBalancer
