@@ -10,4 +10,4 @@ spec:
   http:
     service:
         spec:
-            type: LoadBalancer
+            type: ClusterIP
