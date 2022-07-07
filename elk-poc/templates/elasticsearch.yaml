@@ -32,7 +32,7 @@ spec:
             storage: 2Gi
         storageClassName: longhorn
   - name: data-nodes
-    count: 10
+    count: 2
     config:
       node.roles: ["data"]
     volumeClaimTemplates:
