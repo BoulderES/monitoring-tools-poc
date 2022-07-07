@@ -32,7 +32,7 @@ spec:
             storage: 5Gi
         storageClassName: longhorn
   - name: data-nodes
-    count: 2
+    count: 4
     podTemplate:
       spec:
         initContainers:
