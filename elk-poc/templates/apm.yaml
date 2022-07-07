@@ -9,3 +9,14 @@ spec:
     name: elasticsearch-poc
   kibanaRef:
     name: kibana-poc
+  podTemplate:
+    spec:
+      containers:
+      - name: apm-server
+        resources:
+          requests:
+            memory: 2Gi
+            cpu: 2
+          limits:
+            memory: 2Gi
+            cpu: 2

@@ -4,13 +4,27 @@ metadata:
   name: kibana-poc
 spec:
   version: 8.3.1
-  count: 5
+  count: 3
   elasticsearchRef:
     name: elasticsearch-poc
   http:
     service:
         spec:
             type: ClusterIP
+  podTemplate:
+    spec:
+      containers:
+      - name: kibana
+        env:
+          - name: NODE_OPTIONS
+            value: "--max-old-space-size=2048"
+        resources:
+          requests:
+            memory: 2Gi
+            cpu: 2
+          limits:
+            memory: 2Gi
+            cpu: 2
   config:
     xpack.fleet.agents.elasticsearch.hosts: ["https://elasticsearch-poc-es-http.default.svc:9200"]
     xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-agent-http.default.svc:8220"]
