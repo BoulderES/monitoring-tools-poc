@@ -3,7 +3,7 @@ kind: Elasticsearch
 metadata:
   name: elasticsearch-poc
 spec:
-  version: 8.3.1
+  version: 8.3.2
   transport:
     tls:
       subjectAltNames:

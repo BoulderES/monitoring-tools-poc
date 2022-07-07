@@ -3,8 +3,8 @@ kind: ApmServer
 metadata:
   name: apm-server-poc
 spec:
-  version: 8.3.1
-  count: 1
+  version: 8.3.2
+  count: 3
   elasticsearchRef:
     name: elasticsearch-poc
   kibanaRef:

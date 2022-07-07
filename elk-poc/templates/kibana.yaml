@@ -3,7 +3,7 @@ kind: Kibana
 metadata:
   name: kibana-poc
 spec:
-  version: 8.3.1
+  version: 8.3.2
   count: 3
   elasticsearchRef:
     name: elasticsearch-poc
