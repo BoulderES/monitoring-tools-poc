@@ -11,6 +11,8 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: kibana-poc
-          servicePort: 5601
+          service:
+            name: kibana-poc
+            port:
+              number: 5601
         path: /
