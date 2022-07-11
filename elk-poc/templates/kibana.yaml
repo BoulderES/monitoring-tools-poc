@@ -19,9 +19,9 @@ spec:
           - name: NODE_OPTIONS
             value: "--max-old-space-size=2048"
           - name: HTTP_PROXY
-            value: "http://proxy.unicc.org"
+            value: "http://proxy.unicc.org:80"
           - name: HTTPS_PROXY
-            value: "http://proxy.unicc.org"
+            value: "http://proxy.unicc.org:80"
           - name: no_proxy
             value: "localhost,127.0.0.1,172.17.0.0/16,10.0.0.0/8,.unicc.org"
         resources:
