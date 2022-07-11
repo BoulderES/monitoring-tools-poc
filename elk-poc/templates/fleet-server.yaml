@@ -34,7 +34,7 @@ metadata:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: fleet-server-poc
+  name: fleet-server
 rules:
 - apiGroups: [""]
   resources:
