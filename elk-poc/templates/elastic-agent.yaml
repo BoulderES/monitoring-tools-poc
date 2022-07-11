@@ -11,11 +11,10 @@ spec:
   fleetServerRef:
     name: fleet-server-poc
   mode: fleet
-  daemonSet:
+  deployment:
+    replicas: 1
     podTemplate:
       spec:
-        serviceAccountName: elastic-agent-poc
-        automountServiceAccountToken: true
         securityContext:
           runAsUser: 0
 

@@ -4,7 +4,7 @@ metadata:
   name: apm-server-poc
 spec:
   version: 8.3.2
-  count: 2
+  count: 1
   elasticsearchRef:
     name: elasticsearch-poc
   kibanaRef:
@@ -20,16 +20,3 @@ spec:
           limits:
             memory: 2Gi
             cpu: 2
-
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: apm
-spec:
-  selector:
-    agent.k8s.elastic.co/name: elastic-agent
-  ports:
-  - protocol: TCP
-    port: 8200
