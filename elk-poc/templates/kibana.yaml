@@ -18,6 +18,12 @@ spec:
         env:
           - name: NODE_OPTIONS
             value: "--max-old-space-size=2048"
+          - name: HTTP_PROXY
+            value: "http://proxy.unicc.org"
+          - name: HTTPS_PROXY
+            value: "http://proxy.unicc.org"
+          - name: no_proxy
+            value: "localhost,127.0.0.1,172.17.0.0/16,10.0.0.0/8,.unicc.org"
         resources:
           requests:
             memory: 2Gi
