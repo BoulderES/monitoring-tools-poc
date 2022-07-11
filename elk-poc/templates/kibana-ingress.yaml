@@ -7,7 +7,7 @@ metadata:
   name: kibana-poc-ingress
 spec:
   rules:
-  - host: kibana.rancher-poc.unicc.org
+  - host: {{ .Values.kibana_base_url }}
     http:
       paths:
       - backend:

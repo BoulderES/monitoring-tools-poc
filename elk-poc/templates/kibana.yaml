@@ -26,6 +26,7 @@ spec:
             memory: 2Gi
             cpu: 2
   config:
+    server.publicBaseUrl: {{ .Values.kibana_base_url }}
     xpack.fleet.agents.elasticsearch.hosts: ["https://elasticsearch-poc-es-http.default.svc:9200"]
     xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-poc-agent-http.default.svc:8220"]
     xpack.fleet.packages:
