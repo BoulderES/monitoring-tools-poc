@@ -32,6 +32,7 @@ spec:
               memory: 4Gi
     config:
       node.roles: ["master", "remote_cluster_client"]
+      node.store.allow_mmap: false
     volumeClaimTemplates:
     - metadata:
         name: elasticsearch-data
@@ -65,6 +66,7 @@ spec:
               memory: 16Gi
     config:
       node.roles: ["data", "remote_cluster_client"]
+      node.store.allow_mmap: false
     volumeClaimTemplates:
     - metadata:
         name: elasticsearch-data
