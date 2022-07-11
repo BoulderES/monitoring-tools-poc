@@ -72,21 +72,11 @@ spec:
       is_default: true
       package_policies:
       - package:
+          name: system
+        name: system-1
+      - package:
           name: kubernetes
         name: kubernetes-1
-      - name: system-1
-        id: system-1
-        package:
-          name: system
-      - package:
-          name: apm
-        name: apm-1
-        inputs:
-        - type: apm
-          enabled: true
-          vars:
-          - name: host
-            value: 0.0.0.0:8200
     - name: Elastic APM Agent on ECK policy
       id: eck-agent-apm
       namespace: default

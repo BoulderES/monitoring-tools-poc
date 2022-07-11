@@ -10,10 +10,13 @@ spec:
   fleetServerRef:
     name: fleet-server-poc
   mode: fleet
-  deployment:
-    replicas: 1
+  daemonSet:
     podTemplate:
       spec:
+        serviceAccountName: elastic-agent
+        hostNetwork: true
+        dnsPolicy: ClusterFirstWithHostNet
+        automountServiceAccountToken: true
         securityContext:
           runAsUser: 0
 
