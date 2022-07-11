@@ -49,7 +49,7 @@ spec:
     - name: Fleet Server on ECK policy
       id: eck-fleet-server
       is_default_fleet_server: true
-      namespace: monitoring-poc
+      namespace: monitoring-tools-poc
       monitoring_enabled:
       - logs
       - metrics
@@ -60,7 +60,7 @@ spec:
           name: fleet_server
     - name: Elastic Agent on ECK policy
       id: eck-agent
-      namespace: monitoring-poc
+      namespace: monitoring-tools-poc
       monitoring_enabled:
       - logs
       - metrics
