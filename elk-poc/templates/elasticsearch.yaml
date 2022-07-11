@@ -31,7 +31,7 @@ spec:
             limits:
               memory: 4Gi
     config:
-      node.roles: ["master"]
+      node.roles: ["master", "remote_cluster_client"]
     volumeClaimTemplates:
     - metadata:
         name: elasticsearch-data
@@ -64,7 +64,7 @@ spec:
             limits:
               memory: 16Gi
     config:
-      node.roles: ["data"]
+      node.roles: ["data", "remote_cluster_client"]
     volumeClaimTemplates:
     - metadata:
         name: elasticsearch-data
