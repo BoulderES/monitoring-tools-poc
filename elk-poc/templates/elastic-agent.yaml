@@ -3,7 +3,6 @@ apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
   name: elastic-agent-poc
-  namespace: default
 spec:
   version: 8.3.2
   kibanaRef:
@@ -25,7 +24,6 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: elastic-agent
-  namespace: default
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -94,7 +92,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: elastic-agent
-  namespace: default
+  namespace: monitoring-tools-poc
 roleRef:
   kind: ClusterRole
   name: elastic-agent
