@@ -23,7 +23,7 @@ spec:
           - name: HTTPS_PROXY
             value: "http://proxy.unicc.org:80"
           - name: NO_PROXY
-            value: "localhost,127.0.0.1,172.17.0.0/16,10.0.0.0/8,.unicc.org"
+            value: "localhost,127.0.0.1,172.17.0.0/16,10.0.0.0/8,.unicc.org,.svc"
         resources:
           requests:
             memory: 2Gi
