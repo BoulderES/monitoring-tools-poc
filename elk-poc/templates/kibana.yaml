@@ -33,9 +33,6 @@ spec:
             cpu: 2
   config:
     server.publicBaseUrl: https://{{ .Values.kibana_base_url }}
-    elasticsearch.username: "admin"
-    elasticsearch.password: "Alicante1234"
-
     xpack.fleet.registryProxyUrl: http://proxy.unicc.org:80
     xpack.fleet.agents.elasticsearch.hosts: ["https://elasticsearch-poc-es-http.monitoring-tools-poc.svc:9200"]
     xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-poc-agent-http.monitoring-tools-poc.svc:8220"]
