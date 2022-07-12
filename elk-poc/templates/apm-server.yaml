@@ -20,3 +20,8 @@ spec:
           limits:
             memory: 2Gi
             cpu: 2
+  config:
+    output:
+      elasticsearch:
+        headers:
+          X-My-Header: Just an example of a custom settings
