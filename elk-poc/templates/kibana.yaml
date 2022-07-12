@@ -33,8 +33,6 @@ spec:
             cpu: 2
   config:
     server.publicBaseUrl: https://{{ .Values.kibana_base_url }}
-    xpack.encryptedSavedObjects.encryptionKey: "something_at_least_32_characters"
-    xpack.security.enabled: true
     elasticsearch.username: "admin"
     elasticsearch.password: "Alicante1234"
 
