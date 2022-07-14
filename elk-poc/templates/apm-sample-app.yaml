@@ -52,7 +52,7 @@ spec:
         - name: ELASTIC_APM_SECRET_TOKEN
           valueFrom:
             secretKeyRef:
-              name: elastic-apm-apm-token
+              name: apm-server-poc-apm-token
               key: secret-token
         - name: JAVA_TOOL_OPTIONS
           value: -javaagent:/elastic/apm/agent/elastic-apm-agent.jar
