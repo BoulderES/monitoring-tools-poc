@@ -19,13 +19,13 @@ spec:
         automountServiceAccountToken: true
         securityContext:
           runAsUser: 0
-  http:
-    service:
-      spec:
-        type: ClusterIP
-    tls:
-      selfSignedCertificate:
-        disabled: true
+#  http:
+#    service:
+#      spec:
+#        type: ClusterIP
+#    tls:
+#      selfSignedCertificate:
+#        disabled: true
 
 
 

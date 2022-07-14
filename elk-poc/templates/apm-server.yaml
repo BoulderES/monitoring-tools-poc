@@ -41,10 +41,10 @@ spec:
       elasticsearch:
         headers:
           X-Custom-Header: Custom header
-  http:
-    service:
-      spec:
-        type: ClusterIP
-    tls:
-      selfSignedCertificate:
-        disabled: true
+#  http:
+#    service:
+#      spec:
+#        type: ClusterIP
+#    tls:
+#      selfSignedCertificate:
+#        disabled: true
