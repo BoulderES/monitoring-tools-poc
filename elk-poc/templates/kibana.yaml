@@ -46,7 +46,7 @@ spec:
     - name: kubernetes
       # pinning this version as the next one introduced a kube-proxy host setting default that breaks this recipe,
       # see https://github.com/elastic/integrations/pull/1565 for more details
-      version: 0.14.0
+      version: 1.21.1
     - name: apm
       version: latest
     - name: log
