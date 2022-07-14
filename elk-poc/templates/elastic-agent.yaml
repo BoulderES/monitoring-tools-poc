@@ -9,6 +9,7 @@ spec:
     name: kibana
   fleetServerRef:
     name: fleet-server
+    serviceName: fleet-server-agent-http.monitoring-tools-poc.agent.local
   mode: fleet
   daemonSet:
     podTemplate:
