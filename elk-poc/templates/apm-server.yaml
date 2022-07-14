@@ -26,6 +26,7 @@ spec:
       jaeger.grpc.enabled: true
       jaeger.http.enabled: true
       rum.enabled: true
+      ilm.enabled: true
       rum.event_rate.limit: 300
       rum.event_rate.lru_size: 1000
       rum.allow_origins: ['']
@@ -40,3 +41,10 @@ spec:
       elasticsearch:
         headers:
           X-Custom-Header: Custom header
+  http:
+    service:
+      spec:
+        type: LoadBalancer
+    tls:
+      selfSignedCertificate:
+        disabled: true
