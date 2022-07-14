@@ -33,6 +33,8 @@ spec:
       rum.source_mapping.enabled: true
       rum.source_mapping.cache.expiration: 5m
       rum.source_mapping.index_pattern: "apm--sourcemap*"
+      max_event_size: 30720000
+      max_connections: 0
     output:
       elasticsearch:
         headers:
