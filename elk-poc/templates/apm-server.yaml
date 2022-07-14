@@ -11,6 +11,7 @@ spec:
     name: kibana-poc
   podTemplate:
     spec:
+      hostNetwork: true
       containers:
       - name: apm-server
         resources:
@@ -32,10 +33,10 @@ spec:
       rum.exclude_from_grouping: "^/webpack"
       rum.source_mapping.enabled: true
       rum.source_mapping.cache.expiration: 5m
-      rum.source_mapping.index_pattern: "apm--sourcemap*"
+      rum.source_mapping.index_pattern: "apm*"
       max_event_size: 30720000
       max_connections: 0
     output:
       elasticsearch:
         headers:
-          X-My-Header: Just an example of a custom settings
+          X-Custom-Header: Custom header

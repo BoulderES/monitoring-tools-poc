@@ -1,29 +1,29 @@
-### elastic-apm.yaml
-apiVersion: apm.k8s.elastic.co/v1
-kind: ApmServer
-metadata:
-  name: apm-server-aux-poc
-  namespace: monitoring-tools-poc
-spec:
-  version: 8.3.2
-  count: 1
-  http:
-    tls:  ### for make it easy to test, let's disable tls for now
-      selfSignedCertificate:
-        disabled: true
-  config:
-    name: elastic-apm
-    apm-server:
-      jaeger.grpc.enabled: true
-      jaeger.http.enabled: true
-      rum.enabled: true
-      rum.event_rate.limit: 300
-      rum.event_rate.lru_size: 1000
-      rum.allow_origins: ['']
-      rum.library_pattern: "node_modules|bower_components|~"
-      rum.exclude_from_grouping: "^/webpack"
-      rum.source_mapping.enabled: true
-      rum.source_mapping.cache.expiration: 5m
-      rum.source_mapping.index_pattern: "apm--sourcemap*"
-  elasticsearchRef:
-    name: "elasticsearch-poc"
+#### elastic-apm.yaml
+#apiVersion: apm.k8s.elastic.co/v1
+#kind: ApmServer
+#metadata:
+#  name: apm-server-aux-poc
+#  namespace: monitoring-tools-poc
+#spec:
+#  version: 8.3.2
+#  count: 1
+#  http:
+#    tls:  ### for make it easy to test, let's disable tls for now
+#      selfSignedCertificate:
+#        disabled: true
+#  config:
+#    name: elastic-apm
+#    apm-server:
+#      jaeger.grpc.enabled: true
+#      jaeger.http.enabled: true
+#      rum.enabled: true
+#      rum.event_rate.limit: 300
+#      rum.event_rate.lru_size: 1000
+#      rum.allow_origins: ['']
+#      rum.library_pattern: "node_modules|bower_components|~"
+#      rum.exclude_from_grouping: "^/webpack"
+#      rum.source_mapping.enabled: true
+#      rum.source_mapping.cache.expiration: 5m
+#      rum.source_mapping.index_pattern: "apm--sourcemap*"
+#  elasticsearchRef:
+#    name: "elasticsearch-poc"
