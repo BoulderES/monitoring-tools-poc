@@ -21,6 +21,18 @@ spec:
             memory: 2Gi
             cpu: 2
   config:
+    apm-server:
+      jaeger.grpc.enabled: true
+      jaeger.http.enabled: true
+      rum.enabled: true
+      rum.event_rate.limit: 300
+      rum.event_rate.lru_size: 1000
+      rum.allow_origins: ['']
+      rum.library_pattern: "node_modules|bower_components|~"
+      rum.exclude_from_grouping: "^/webpack"
+      rum.source_mapping.enabled: true
+      rum.source_mapping.cache.expiration: 5m
+      rum.source_mapping.index_pattern: "apm--sourcemap*"
     output:
       elasticsearch:
         headers:
