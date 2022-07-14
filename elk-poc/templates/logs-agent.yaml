@@ -3,7 +3,7 @@ kind: Agent
 metadata:
   name: elastic-agent-logs-poc
 spec:
-  version: 8.2.0
+  version: 8.3.2
   kibanaRef:
     name: kibana-poc
   fleetServerRef:
