@@ -4,7 +4,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/backend-protocol: HTTPS
-  name: kibana-poc-ingress
+  name: kibana-ingress
 spec:
   rules:
   - host: {{ .Values.kibana_base_url }}
@@ -12,7 +12,7 @@ spec:
       paths:
       - backend:
           service:
-            name: kibana-poc-kb-http
+            name: kibana-kb-http
             port:
               number: 5601
         path: /

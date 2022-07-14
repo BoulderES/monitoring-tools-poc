@@ -2,7 +2,7 @@
 #apiVersion: apm.k8s.elastic.co/v1
 #kind: ApmServer
 #metadata:
-#  name: apm-server-aux-poc
+#  name: apm-server-aux
 #  namespace: monitoring-tools-poc
 #spec:
 #  version: 8.3.2
@@ -26,4 +26,4 @@
 #      rum.source_mapping.cache.expiration: 5m
 #      rum.source_mapping.index_pattern: "apm--sourcemap*"
 #  elasticsearchRef:
-#    name: "elasticsearch-poc"
+#    name: "elasticsearch"

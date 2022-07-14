@@ -40,7 +40,7 @@ spec:
           name: elastic-apm-agent
         env:
         - name: ELASTIC_APM_SERVER_URL
-          value: "http://apm-server-aux-poc-apm-http.monitoring-tools-poc.svc.cluster.local:8200"
+          value: "http://apm-server-aux-apm-http.monitoring-tools-poc.svc.cluster.local:8200"
         - name: ELASTIC_APM_SERVICE_NAME
           value: "petclinic"
         - name: ELASTIC_APM_APPLICATION_PACKAGES
@@ -52,7 +52,7 @@ spec:
         - name: ELASTIC_APM_SECRET_TOKEN
           valueFrom:
             secretKeyRef:
-              name: apm-server-poc-apm-token
+              name: apm-server-apm-token
               key: secret-token
         - name: JAVA_TOOL_OPTIONS
           value: -javaagent:/elastic/apm/agent/elastic-apm-agent.jar

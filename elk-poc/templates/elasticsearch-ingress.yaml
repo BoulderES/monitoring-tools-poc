@@ -4,7 +4,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/backend-protocol: HTTPS
-  name: elasticsearch-poc-ingress
+  name: elasticsearch-ingress
 spec:
   rules:
   - host: elasticsearch.rancher-poc.unicc.org
@@ -12,7 +12,7 @@ spec:
       paths:
       - backend:
           service:
-            name: elasticsearch-poc-es-http
+            name: elasticsearch-es-http
             port:
               number: 9200
         path: /
