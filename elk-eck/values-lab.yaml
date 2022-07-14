@@ -84,7 +84,7 @@ serviceAccount:
 
 tracing:
   # enabled specifies whether APM tracing is enabled for the operator.
-  enabled: false
+  enabled: true
   # config is a map of APM Server configuration variables that should be set in the environment.
   config:
     ELASTIC_APM_SERVER_URL: http://localhost:8200
