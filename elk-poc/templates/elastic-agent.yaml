@@ -10,8 +10,7 @@ spec:
   fleetServerRef:
     name: fleet-server
   mode: fleet
-  deployment:
-    replicas: 1
+  daemonSet:
     podTemplate:
       spec:
         serviceAccountName: elastic-agent
