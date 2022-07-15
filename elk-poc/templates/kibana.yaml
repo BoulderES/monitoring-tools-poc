@@ -37,13 +37,15 @@ spec:
       version: latest
     - name: fleet_server
       version: latest
-#    - name: kubernetes
-#      version: 1.21.1
+    - name: kubernetes
+      version: 1.21.1
     - name: apm
       version: latest
 #    - name: log
 #      version: latest
     xpack.fleet.agentPolicies:
+
+
       - name: Fleet Server on ECK policy
         id: eck-fleet-server
         is_default_fleet_server: true
@@ -56,19 +58,37 @@ spec:
           id: fleet_server-1
           package:
             name: fleet_server
+
       - name: Elastic Agent on ECK policy
         id: eck-agent
         namespace: default
         monitoring_enabled:
-          - logs
-          - metrics
+        - logs
+        - metrics
         unenroll_timeout: 900
         is_default: true
         package_policies:
-          - name: system-1
-            id: system-1
-            package:
-              name: system
+        - package:
+            name: system
+          name: system-1
+        - package:
+            name: kubernetes
+          name: kubernetes-1
+
+#
+#      - name: Elastic Agent on ECK policy
+#        id: eck-agent
+#        namespace: default
+#        monitoring_enabled:
+#          - logs
+#          - metrics
+#        unenroll_timeout: 900
+#        is_default: true
+#        package_policies:
+#          - name: system-1
+#            id: system-1
+#            package:
+#              name: system
 
 #    xpack.fleet.agentPolicies:
 #    - name: Fleet Server on ECK policy
@@ -107,6 +127,9 @@ spec:
 #            value: 0.0.0.0:8200
 
 #    xpack.fleet.agentPolicies:
+
+
+
 #    - name: Fleet Server policy
 #      id: fleet-server-policy
 #      is_default_fleet_server: true
@@ -117,6 +140,9 @@ spec:
 #        id: fleet_server-1
 #        package:
 #          name: fleet_server
+
+
+
 #    - name: APM Policy
 #      id: apm-policy
 #      is_default: true
