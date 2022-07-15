@@ -44,83 +44,181 @@ spec:
 #    - name: log
 #      version: latest
     xpack.fleet.agentPolicies:
-    - name: Fleet Server on ECK policy
-      id: eck-fleet-server
-      is_default_fleet_server: true
-      namespace: default
-      monitoring_enabled:
-      - logs
-      - metrics
-      package_policies:
-      - name: fleet_server-1
-        id: fleet_server-1
-        package:
-          name: fleet_server
-    - name: Elastic K8s Agent on ECK policy
-      id: eck-agent-k8s
-      namespace: default
-      monitoring_enabled:
-      - logs
-      - metrics
-      unenroll_timeout: 900
-      is_default: true
-      package_policies:
-      - package:
-          name: system
-        name: system-1
-      - package:
-          name: kubernetes
-        name: kubernetes-1
-    - name: Elastic APM Agent on ECK policy
-      id: eck-agent-apm
-      namespace: default
-      monitoring_enabled:
-      - logs
-      - metrics
-      unenroll_timeout: 900
-      is_default: true
-      package_policies:
-      - name: system-1
-        id: system-1
-        package:
-          name: system
-      - package:
-          name: apm
-        name: apm-1
-        inputs:
-        - type: apm
-          enabled: true
-          vars:
-          - name: host
-            value: 0.0.0.0:8200
-    - name: Elastic Logs Agent on ECK policy
-      id: eck-agent
-      namespace: default
-      monitoring_enabled:
-      - logs
-      - metrics
-      unenroll_timeout: 900
-      is_default: true
-      package_policies:
-      - name: system-1
-        id: system-1
-        package:
-          name: system
-      - package:
-          name: log
-        name: log-1
-        inputs:
-        - type: logfile
-          enabled: true
-          streams:
-          - data_stream:
-              dataset: log.log
-            enabled: true
-            vars:
-            - name: paths
-              value:
-              - '/var/log/containers/*${kubernetes.container.id}.log'
-            - name: custom
-              value: |
-                symlinks: true
-                condition: ${kubernetes.namespace} == 'default'
+      - name: Fleet Server on ECK policy
+        id: eck-fleet-server
+        is_default_fleet_server: true
+        namespace: default
+        monitoring_enabled:
+          - logs
+          - metrics
+        package_policies:
+        - name: fleet_server-1
+          id: fleet_server-1
+          package:
+            name: fleet_server
+      - name: Elastic Agent on ECK policy
+        id: eck-agent
+        namespace: default
+        monitoring_enabled:
+          - logs
+          - metrics
+        unenroll_timeout: 900
+        is_default: true
+        package_policies:
+          - name: system-1
+            id: system-1
+            package:
+              name: system
+
+#    xpack.fleet.agentPolicies:
+#    - name: Fleet Server on ECK policy
+#      id: eck-fleet-server
+#      is_default_fleet_server: true
+#      namespace: default
+#      monitoring_enabled:
+#      - logs
+#      - metrics
+#      package_policies:
+#      - name: fleet_server-1
+#        id: fleet_server-1
+#        package:
+#          name: fleet_server
+#    - name: Elastic Agent on ECK policy
+#      id: eck-agent
+#      namespace: default
+#      monitoring_enabled:
+#      - logs
+#      - metrics
+#      unenroll_timeout: 900
+#      is_default: true
+#      package_policies:
+#      - name: system-1
+#        id: system-1
+#        package:
+#          name: system
+#      - package:
+#          name: apm
+#        name: apm-1
+#        inputs:
+#        - type: apm
+#          enabled: true
+#          vars:
+#          - name: host
+#            value: 0.0.0.0:8200
+
+#    xpack.fleet.agentPolicies:
+#    - name: Fleet Server policy
+#      id: fleet-server-policy
+#      is_default_fleet_server: true
+#      is_managed: true
+#      namespace: default
+#      package_policies:
+#      - name: fleet_server-1
+#        id: fleet_server-1
+#        package:
+#          name: fleet_server
+#    - name: APM Policy
+#      id: apm-policy
+#      is_default: true
+#      is_managed: true
+#      namespace: default
+#      package_policies:
+#        - package:
+#            name: system
+#          name: System Integration
+#          id: preconfigured-system
+#          inputs:
+#            - type: system/metrics
+#              enabled: true
+#              vars:
+#                - name: system.hostfs
+#                  value: home/test
+#              streams:
+#                - data_stream:
+#                    dataset: system.core
+#                  enabled: true
+#                  vars:
+#                    - name: period
+#                      value: 20s
+#            - type: winlog
+#              enabled: false
+#    - name: Elastic APM Agent on ECK policy
+#      id: eck-agent-apm
+#      namespace: default
+#      monitoring_enabled:
+#      - logs
+#      - metrics
+#      unenroll_timeout: 900
+#      is_default: true
+#      package_policies:
+#      - name: system-1
+#        id: system-1
+#        package:
+#          name: system
+#      - package:
+#          name: apm
+#        name: apm-1
+#        inputs:
+#        - type: apm
+#          enabled: true
+#          vars:
+#          - name: host
+#            value: 0.0.0.0:8200
+#    - name: Fleet Server on ECK policy
+#      id: eck-fleet-server
+#      is_default_fleet_server: true
+#      namespace: default
+#      monitoring_enabled:
+#      - logs
+#      - metrics
+#      package_policies:
+#      - name: fleet_server-1
+#        id: fleet_server-1
+#        package:
+#          name: fleet_server
+#    - name: Elastic K8s Agent on ECK policy
+#      id: eck-agent-k8s
+#      namespace: default
+#      monitoring_enabled:
+#      - logs
+#      - metrics
+#      unenroll_timeout: 900
+#      is_default: true
+#      package_policies:
+#      - package:
+#          name: system
+#        name: system-1
+#      - package:
+#          name: kubernetes
+#        name: kubernetes-1
+#    - name: Elastic Logs Agent on ECK policy
+#      id: eck-agent
+#      namespace: default
+#      monitoring_enabled:
+#      - logs
+#      - metrics
+#      unenroll_timeout: 900
+#      is_default: true
+#      package_policies:
+#      - name: system-1
+#        id: system-1
+#        package:
+#          name: system
+#      - package:
+#          name: log
+#        name: log-1
+#        inputs:
+#        - type: logfile
+#          enabled: true
+#          streams:
+#          - data_stream:
+#              dataset: log.log
+#            enabled: true
+#            vars:
+#            - name: paths
+#              value:
+#              - '/var/log/containers/*${kubernetes.container.id}.log'
+#            - name: custom
+#              value: |
+#                symlinks: true
+#                condition: ${kubernetes.namespace} == 'default'
