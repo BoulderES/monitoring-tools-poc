@@ -41,8 +41,8 @@ spec:
       version: 1.21.1
     - name: apm
       version: latest
-#    - name: log
-#      version: latest
+    - name: log
+      version: latest
     xpack.fleet.agentPolicies:
 
 
