@@ -43,9 +43,9 @@ spec:
         - name: ELASTIC_APM_SERVER_URL
           value: "https://apm-elastic-agent.monitoring-tools-poc.svc:8200"
         - name: ELASTIC_APM_SERVICE_NAME
-              value: petclinic
+          value: petclinic
         - name: ELASTIC_APM_APPLICATION_PACKAGES
-              value: org.springframework.samples.petclinic
+          value: org.springframework.samples.petclinic
         - name: ELASTIC_APM_ENVIRONMENT
               value: dev
         - name: JAVA_TOOL_OPTIONS
