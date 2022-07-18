@@ -110,4 +110,4 @@ spec:
               vars:
               - name: paths
                 value:
-                - '/var/lib/docker/containers/*.log'
+                - '/var/lib/docker/containers/*/*.log'
