@@ -35,7 +35,7 @@ spec:
       - name: petclinic
         image: eyalkoren/pet-clinic:without-agent
       ######################### Volume path and agent config ###########################
-      ################# keytool -import -noprompt -trustcacerts -alias apm-server-apm-http.monitoring-tools-poc.svc.cluster.local -file servicecertificate -keystore "$JAVA_HOME/jre/lib/security/cacerts" ############
+      ################# keytool -import -noprompt -trustcacerts -alias apm-server-apm-http.monitoring-tools-poc.svc.cluster.local -file servicecertificate -keystore "$JAVA_HOME/jre/lib/security/cacerts"
         volumeMounts:
         - mountPath: /elastic/apm/agent
           name: elastic-apm-agent
@@ -43,20 +43,20 @@ spec:
         - name: ELASTIC_APM_SERVER_URL
           value: "https://apm-elastic-agent.monitoring-tools-poc.svc:8200"
         - name: ELASTIC_APM_SERVICE_NAME
-          value: "petclinic"
+              value: petclinic
         - name: ELASTIC_APM_APPLICATION_PACKAGES
-          value: "org.springframework.samples.petclinic"
+              value: org.springframework.samples.petclinic
         - name: ELASTIC_APM_ENVIRONMENT
-          value: test
-        - name: ELASTIC_APM_LOG_LEVEL
-          value: DEBUG
-        - name: ELASTIC_APM_SECRET_TOKEN
-          valueFrom:
-            secretKeyRef:
-              name: apm-server-apm-token
-              key: secret-token
+              value: dev
         - name: JAVA_TOOL_OPTIONS
-          value: -javaagent:/elastic/apm/agent/elastic-apm-agent.jar
+          value: '-javaagent:/elastic/apm/agent/elastic-apm-agent.jar'
+        - name: ELASTIC_APM_GLOBAL_LABELS
+          value: namespace=test333
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
         - name: ELASTIC_APM_VERIFY_SERVER_CERT
           value: 'false'
 ---
