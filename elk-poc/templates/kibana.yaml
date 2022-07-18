@@ -52,9 +52,9 @@ spec:
         id: eck-fleet-server
         is_default_fleet_server: true
         namespace: default
-        monitoring_enabled:
-          - logs
-          - metrics
+#        monitoring_enabled:
+#          - logs
+#          - metrics
         package_policies:
         - name: fleet_server-1
           id: fleet_server-1
@@ -88,6 +88,21 @@ spec:
           id: system-1
           package:
             name: system
+          inputs:
+            - type: system/metrics
+              enabled: true
+              vars:
+                - name: system.hostfs
+                  value: /hostfs
+              streams:
+                - data_stream:
+                    dataset: system.core
+                  enabled: true
+                  vars:
+                    - name: period
+                      value: 20s
+            - type: winlog
+              enabled: false
         - package:
             name: apm
           name: apm-1

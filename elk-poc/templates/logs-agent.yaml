@@ -18,6 +18,11 @@ spec:
           runAsUser: 0
         containers:
         - name: agent
+          args:
+          - -e
+          - -c
+          - /etc/beat.yml
+          - -system.hostfs=/hostfs
           volumeMounts:
           - mountPath: /var/lib/docker/containers
             name: varlibdockercontainers
@@ -25,6 +30,17 @@ spec:
             name: varlogcontainers
           - mountPath: /var/log/pods
             name: varlogpods
+          - mountPath: /hostfs/sys/fs/cgroup
+            name: cgroup
+          - mountPath: /var/run/docker.sock
+            name: dockersock
+          - mountPath: /hostfs/proc
+            name: proc
+          env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
         volumes:
         - name: varlibdockercontainers
           hostPath:
@@ -35,8 +51,53 @@ spec:
         - name: varlogpods
           hostPath:
             path: /var/log/pods
+        - hostPath:
+            path: /sys/fs/cgroup
+          name: cgroup
+        - hostPath:
+            path: /var/run/docker.sock
+          name: dockersock
+        - hostPath:
+            path: /proc
 
-
+#    podTemplate:
+#      spec:
+#        serviceAccountName: metricbeat
+#        automountServiceAccountToken: true # some older Beat versions are depending on this settings presence in k8s context
+#        containers:
+#        - args:
+#          - -e
+#          - -c
+#          - /etc/beat.yml
+#          - -system.hostfs=/hostfs
+#          name: metricbeat
+#          volumeMounts:
+#          - mountPath: /hostfs/sys/fs/cgroup
+#            name: cgroup
+#          - mountPath: /var/run/docker.sock
+#            name: dockersock
+#          - mountPath: /hostfs/proc
+#            name: proc
+#          env:
+#          - name: NODE_NAME
+#            valueFrom:
+#              fieldRef:
+#                fieldPath: spec.nodeName
+#        dnsPolicy: ClusterFirstWithHostNet
+#        hostNetwork: true # Allows to provide richer host metadata
+#        securityContext:
+#          runAsUser: 0
+#        terminationGracePeriodSeconds: 30
+#        volumes:
+#        - hostPath:
+#            path: /sys/fs/cgroup
+#          name: cgroup
+#        - hostPath:
+#            path: /var/run/docker.sock
+#          name: dockersock
+#        - hostPath:
+#            path: /proc
+#          name: proc
 
 ---
 apiVersion: v1
