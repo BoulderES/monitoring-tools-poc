@@ -41,7 +41,7 @@ spec:
           name: elastic-apm-agent
         env:
         - name: ELASTIC_APM_SERVER_URL
-          value: "https://apm-server-apm-http.monitoring-tools-poc.svc.cluster.local:8200"
+          value: "https://apm-elastic-agent.monitoring-tools-poc.svc.cluster.local:8200"
         - name: ELASTIC_APM_SERVICE_NAME
           value: "petclinic"
         - name: ELASTIC_APM_APPLICATION_PACKAGES
