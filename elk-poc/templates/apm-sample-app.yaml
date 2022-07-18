@@ -48,6 +48,8 @@ spec:
           value: org.springframework.samples.petclinic
         - name: ELASTIC_APM_ENVIRONMENT
           value: dev
+        - name: ELASTIC_APM_LOG_LEVEL
+          value: DEBUG
         - name: JAVA_TOOL_OPTIONS
           value: '-javaagent:/elastic/apm/agent/elastic-apm-agent.jar'
         - name: ELASTIC_APM_GLOBAL_LABELS

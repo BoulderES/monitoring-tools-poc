@@ -67,6 +67,8 @@ spec:
     config:
       node.roles: ["data", "remote_cluster_client"]
       node.store.allow_mmap: false
+      xpack.security.enabled: true
+      xpack.security.authc.api_key.enabled: true
     volumeClaimTemplates:
     - metadata:
         name: elasticsearch-data

@@ -26,6 +26,9 @@ spec:
             memory: 2Gi
             cpu: 2
   config:
+    elasticsearch.username: "kibana_system"
+    xpack.security.enabled: true
+    xpack.encryptedSavedObjects.encryptionKey: "something_at_least_32_characters"
     server.publicBaseUrl: https://{{ .Values.kibana_base_url }}
     xpack.fleet.registryProxyUrl: http://proxy.unicc.org:80
     xpack.fleet.agents.elasticsearch.hosts: ["https://elasticsearch-es-http.monitoring-tools-poc.svc:9200"]
