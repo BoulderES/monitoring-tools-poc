@@ -101,7 +101,7 @@ spec:
               - name: custom
                 value: |
                   symlinks: true
-                  condition: ${kubernetes.namespace} == 'monitoring-tools-poc'
+#                  condition: ${kubernetes.namespace} == 'monitoring-tools-poc'
         - package:
             name: apm
           name: apm-1
