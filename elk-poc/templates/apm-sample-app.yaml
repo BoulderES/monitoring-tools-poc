@@ -57,6 +57,8 @@ spec:
               key: secret-token
         - name: JAVA_TOOL_OPTIONS
           value: -javaagent:/elastic/apm/agent/elastic-apm-agent.jar
+        - name: ELASTIC_APM_VERIFY_SERVER_CERT
+          value: 'false'
 ---
 apiVersion: v1
 kind: Service
