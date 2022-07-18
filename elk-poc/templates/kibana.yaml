@@ -13,7 +13,8 @@ spec:
             type: ClusterIP
     tls:
       selfSignedCertificate:
-        disabled: true
+        subjectAltNames:
+        - dns: kibana-kb-http.monitoring-tools-poc.svc.cluster.local
   podTemplate:
     spec:
       containers:
