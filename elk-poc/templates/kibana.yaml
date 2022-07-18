@@ -76,7 +76,29 @@ spec:
 #            name: kubernetes
 #          name: kubernetes-1
       - name: Elastic Agent on ECK policy
-        id: eck-agent
+        id: eck-agent-apm
+        namespace: default
+        monitoring_enabled:
+        - logs
+        - metrics
+        unenroll_timeout: 900
+        is_default: true
+        package_policies:
+        - name: system-1
+          id: system-1
+          package:
+            name: system
+        - package:
+            name: apm
+          name: apm-1
+          inputs:
+          - type: apm
+            enabled: true
+            vars:
+            - name: host
+              value: 0.0.0.0:8200
+      - name: Preconfigured Policy
+        id: eck-agent-logs
         namespace: default
         monitoring_enabled:
         - logs
@@ -102,39 +124,3 @@ spec:
               - name: paths
                 value:
                 - '/var/log/containers/*${kubernetes.container.id}.log'
-              - name: custom
-                value: |
-                  symlinks: true
-#                  condition: ${kubernetes.namespace} == 'monitoring-tools-poc'
-        - package:
-            name: apm
-          name: apm-1
-          inputs:
-          - type: apm
-            enabled: true
-            vars:
-            - name: host
-              value: 0.0.0.0:8200
-      - name: Preconfigured Policy
-        id: 1
-        namespace: test
-        package_policies:
-          - package:
-              name: system
-            name: System Integration
-            id: preconfigured-system
-            inputs:
-              - type: system/metrics
-                enabled: true
-                vars:
-                  - name: system.hostfs
-                    value: home/test
-                streams:
-                  - data_stream:
-                      dataset: system.core
-                    enabled: true
-                    vars:
-                      - name: period
-                        value: 20s
-              - type: winlog
-                enabled: false
