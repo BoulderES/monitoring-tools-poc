@@ -58,12 +58,6 @@ spec:
             path: /var/run/docker.sock
           name: dockersock
         - hostPath:
-            path: /sys/fs/cgroup
-          name: cgroup
-        - hostPath:
-            path: /var/run/docker.sock
-          name: dockersock
-        - hostPath:
             path: /proc
           name: proc
 
