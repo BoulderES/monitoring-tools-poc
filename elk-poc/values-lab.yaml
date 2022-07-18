@@ -1,1 +1,8 @@
 kibana_base_url: kibana.rancher-poc.unicc.org
+
+persistence:
+  storageClassName: longhorn
+  master:
+    size: 5Gi
+  data:
+    size: 10Gi

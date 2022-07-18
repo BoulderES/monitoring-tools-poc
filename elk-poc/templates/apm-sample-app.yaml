@@ -35,12 +35,13 @@ spec:
       - name: petclinic
         image: eyalkoren/pet-clinic:without-agent
       ######################### Volume path and agent config ###########################
+      ################# keytool -import -noprompt -trustcacerts -alias apm-server-apm-http.monitoring-tools-poc.svc.cluster.local -file servicecertificate -keystore "$JAVA_HOME/jre/lib/security/cacerts" ############
         volumeMounts:
         - mountPath: /elastic/apm/agent
           name: elastic-apm-agent
         env:
         - name: ELASTIC_APM_SERVER_URL
-          value: "http://apm-server-apm-http.monitoring-tools-poc.svc.cluster.local:8200"
+          value: "https://apm-server-apm-http.monitoring-tools-poc.svc.cluster.local:8200"
         - name: ELASTIC_APM_SERVICE_NAME
           value: "petclinic"
         - name: ELASTIC_APM_APPLICATION_PACKAGES

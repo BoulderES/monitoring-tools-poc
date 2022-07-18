@@ -41,7 +41,7 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 5Gi
+            storage: {{ .Values.persistence.master.size }}
         storageClassName: longhorn
   - name: data-nodes
     count: 4
@@ -75,5 +75,5 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: 10Gi
-        storageClassName: longhorn
+            storage: {{ .Values.persistence.data.size }}
+        storageClassName: {{ .Values.persistence.storageClassName }}
