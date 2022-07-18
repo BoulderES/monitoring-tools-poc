@@ -29,7 +29,17 @@ spec:
 #        disabled: true
 
 
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apm-elastic-agent
+spec:
+  selector:
+    agent.k8s.elastic.co/name: elastic-agent
+  ports:
+  - protocol: TCP
+    port: 8200
 ---
 apiVersion: v1
 kind: ServiceAccount

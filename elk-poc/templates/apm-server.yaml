@@ -9,6 +9,8 @@ spec:
     name: elasticsearch
   kibanaRef:
     name: kibana
+  data_stream:
+    namespace: test2
   podTemplate:
     spec:
       hostNetwork: true
