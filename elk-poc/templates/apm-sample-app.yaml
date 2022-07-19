@@ -50,13 +50,13 @@ spec:
           value: dev
         - name: ELASTIC_APM_LOG_LEVEL
           value: DEBUG
-        - name: ELASTIC_APM_SECRET_TOKEN
-          value: testtoken1234567890
 #        - name: ELASTIC_APM_SECRET_TOKEN
-#          valueFrom:
-#            secretKeyRef:
-#              name: apm-server-apm-token
-#              key: secret-token
+#          value: testtoken1234567890
+        - name: ELASTIC_APM_SECRET_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: apm-server-apm-token
+              key: secret-token
         - name: JAVA_TOOL_OPTIONS
           value: '-javaagent:/elastic/apm/agent/elastic-apm-agent.jar'
         - name: ELASTIC_APM_GLOBAL_LABELS

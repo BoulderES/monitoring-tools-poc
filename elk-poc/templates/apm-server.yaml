@@ -11,7 +11,7 @@ spec:
     name: kibana
   podTemplate:
     spec:
-      hostNetwork: true
+#      hostNetwork: true
       containers:
       - name: apm-server
         resources:
