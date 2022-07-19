@@ -24,8 +24,8 @@ spec:
           - /etc/beat.yml
           - -system.hostfs=/hostfs
           volumeMounts:
-          - mountPath: /hostfs/sys/fs/cgroup
-            name: cgroup
+#          - mountPath: /hostfs/sys/fs/cgroup
+#            name: cgroup
           - mountPath: /var/run/docker.sock
             name: dockersock
           - mountPath: /hostfs/proc
@@ -39,9 +39,9 @@ spec:
         hostNetwork: true # Allows to provide richer host metadata
         terminationGracePeriodSeconds: 30
         volumes:
-        - hostPath:
-            path: /sys/fs/cgroup
-          name: cgroup
+#        - hostPath:
+#            path: /sys/fs/cgroup
+#          name: cgroup
         - hostPath:
             path: /var/run/docker.sock
           name: dockersock
