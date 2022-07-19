@@ -1,21 +1,18 @@
-kibana_base_url: kibana.rancher-poc.unicc.org
 
-persistence:
-  storageClassName: longhorn
+kibana:
+  base_url: kibana.rancher-poc.unicc.org
+  replicas: 1
+
+elasticsearch:
   master:
-    size: 5Gi
+    replicas: 3
+    persistence:
+      storageClassName: longhorn
+      size: 5Gi
+
   data:
-    size: 10Gi
-
-master:
-  replicas: 3
-  persistence:
-    storageClassName: longhorn
-    size: 5Gi
-
-data:
-  replicas: 2
-  persistence:
-    storageClassName: longhorn
-    size: 10Gi
+    replicas: 2
+    persistence:
+      storageClassName: longhorn
+      size: 10Gi
 

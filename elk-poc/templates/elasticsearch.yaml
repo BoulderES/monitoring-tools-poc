@@ -10,7 +10,7 @@ spec:
       - dns: elasticsearch.rancher-poc.unicc.org
   nodeSets:
   - name: master-nodes
-    count: {{ .Values.master.replicas }}
+    count: {{ .Values.elasticsearch.master.replicas }}
     podTemplate:
       spec:
         initContainers:
@@ -41,10 +41,10 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: {{ .Values.master.persistence.size }}
-        storageClassName: {{ .Values.master.persistence.storageClassName }}
+            storage: {{ .Values.elasticsearch.master.persistence.size }}
+        storageClassName: {{ .Values.elasticsearch.master.persistence.storageClassName }}
   - name: data-nodes
-    count: {{ .Values.data.replicas }}
+    count: {{ .Values.elasticsearch.data.replicas }}
     podTemplate:
       spec:
         initContainers:
@@ -75,5 +75,5 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: {{ .Values.data.persistence.size }}
-        storageClassName: {{ .Values.data.persistence.storageClassName }}
+            storage: {{ .Values.elasticsearch.data.persistence.size }}
+        storageClassName: {{ .Values.elasticsearch.data.persistence.storageClassName }}

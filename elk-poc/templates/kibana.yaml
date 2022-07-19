@@ -4,7 +4,7 @@ metadata:
   name: kibana
 spec:
   version: 8.3.2
-  count: 1
+  count: {{ .Values.kibana.replicas }}
   elasticsearchRef:
     name: elasticsearch
   http:
@@ -30,7 +30,7 @@ spec:
             memory: 2Gi
             cpu: 2
   config:
-    server.publicBaseUrl: https://{{ .Values.kibana_base_url }}
+    server.publicBaseUrl: https://{{ .Values.kibana.base_url }}
     xpack.fleet.registryProxyUrl: http://proxy.unicc.org:80
     xpack.fleet.agents.elasticsearch.hosts: ["https://elasticsearch-es-http.monitoring-tools-poc.svc:9200"]
     xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-agent-http.monitoring-tools-poc.svc:8220"]
