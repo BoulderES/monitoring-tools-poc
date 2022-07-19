@@ -41,10 +41,10 @@ spec:
       version: latest
     - name: fleet_server
       version: latest
-    - name: kubernetes
-      version: 1.21.1
-    - name: apm
-      version: latest
+#    - name: kubernetes
+#      version: 1.21.1
+#    - name: apm
+#      version: latest
     - name: log
       version: latest
     xpack.fleet.agentPolicies:
@@ -103,15 +103,15 @@ spec:
                       value: 20s
             - type: winlog
               enabled: false
-        - package:
-            name: apm
-          name: apm-1
-          inputs:
-          - type: apm
-            enabled: true
-            vars:
-            - name: host
-              value: 0.0.0.0:8200
+#        - package:
+#            name: apm
+#          name: apm-1
+#          inputs:
+#          - type: apm
+#            enabled: true
+#            vars:
+#            - name: host
+#              value: 0.0.0.0:8200
         - package:
             name: log
           name: log-1
