@@ -103,21 +103,6 @@ spec:
                 value:
                 - '/var/lib/docker/containers/*/*.log'
 #                - '/var/log/containers/*.log'
-      - name: Elastic APM Agent on ECK policy
-        id: eck-agent-apm
-        namespace: default
-        monitoring_enabled:
-        - logs
-        - metrics
-        unenroll_timeout: 900
-        is_default: true
-        package_policies:
-        - package:
-            name: system
-          name: system-1
-#        - package:
-#            name: kubernetes
-#          name: kubernetes-1
         - package:
             name: apm
           name: apm-1
@@ -127,3 +112,32 @@ spec:
             vars:
             - name: host
               value: 0.0.0.0:8200
+            - name: url
+              value: http://apm.monitoring-tools-poc.svc.cluster.local:8200
+
+#      - name: Elastic APM Agent on ECK policy
+#        id: eck-agent-apm
+#        namespace: default
+#        monitoring_enabled:
+#        - logs
+#        - metrics
+#        unenroll_timeout: 900
+#        is_default: true
+#        package_policies:
+#        - package:
+#            name: system
+#          name: system-1
+##        - package:
+##            name: kubernetes
+##          name: kubernetes-1
+#        - package:
+#            name: apm
+#          name: apm-1
+#          inputs:
+#          - type: apm
+#            enabled: true
+#            vars:
+#            - name: host
+#              value: 0.0.0.0:8200
+#            - name: url
+#              value: http://apm.monitoring-tools-poc.svc.cluster.local:8200

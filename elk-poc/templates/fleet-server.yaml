@@ -35,7 +35,7 @@ metadata:
   name: apm
 spec:
   selector:
-    agent.k8s.elastic.co/name: elastic-agent
+    agent.k8s.elastic.co/name: elastic-agent-logs
   ports:
   - protocol: TCP
     port: 8200
