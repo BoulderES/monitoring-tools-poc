@@ -52,9 +52,9 @@ spec:
         id: eck-fleet-server
         is_default_fleet_server: true
         namespace: default
-#        monitoring_enabled:
-#          - logs
-#          - metrics
+        monitoring_enabled:
+          - logs
+          - metrics
         package_policies:
         - name: fleet_server-1
           id: fleet_server-1
