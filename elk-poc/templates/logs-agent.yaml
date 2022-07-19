@@ -17,12 +17,12 @@ spec:
         securityContext:
           runAsUser: 0
         containers:
-        - args:
+        - name: agent
+          args:
           - -e
           - -c
           - /etc/beat.yml
           - -system.hostfs=/hostfs
-          name: metricbeat
           volumeMounts:
           - mountPath: /hostfs/sys/fs/cgroup
             name: cgroup
