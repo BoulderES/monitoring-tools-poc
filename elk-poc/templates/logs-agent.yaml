@@ -9,60 +9,6 @@ spec:
   fleetServerRef:
     name: fleet-server
   mode: fleet
-  config:
-    metricbeat:
-      autodiscover:
-        providers:
-        - hints:
-            default_config: {}
-            enabled: "true"
-          node: ${NODE_NAME}
-          type: kubernetes
-      modules:
-      - module: system
-        period: 10s
-        metricsets:
-        - cpu
-        - load
-        - memory
-        - network
-        - process
-        - process_summary
-        process:
-          include_top_n:
-            by_cpu: 5
-            by_memory: 5
-        processes:
-        - .*
-      - module: system
-        period: 1m
-        metricsets:
-        - filesystem
-        - fsstat
-        processors:
-        - drop_event:
-            when:
-              regexp:
-                system:
-                  filesystem:
-                    mount_point: ^/(sys|cgroup|proc|dev|etc|host|lib)($|/)
-      - module: kubernetes
-        period: 10s
-        node: ${NODE_NAME}
-        hosts:
-        - https://${NODE_NAME}:10250
-        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
-        ssl:
-          verification_mode: none
-        metricsets:
-        - node
-        - system
-        - pod
-        - container
-        - volume
-    processors:
-    - add_cloud_metadata: {}
-    - add_host_metadata: {}
   daemonSet:
     podTemplate:
       spec:
@@ -71,19 +17,13 @@ spec:
         securityContext:
           runAsUser: 0
         containers:
-        - name: agent
-          args:
+        - args:
           - -e
           - -c
           - /etc/beat.yml
           - -system.hostfs=/hostfs
+          name: metricbeat
           volumeMounts:
-          - mountPath: /var/lib/docker/containers
-            name: varlibdockercontainers
-          - mountPath: /var/log/containers
-            name: varlogcontainers
-          - mountPath: /var/log/pods
-            name: varlogpods
           - mountPath: /hostfs/sys/fs/cgroup
             name: cgroup
           - mountPath: /var/run/docker.sock
@@ -95,16 +35,10 @@ spec:
             valueFrom:
               fieldRef:
                 fieldPath: spec.nodeName
+        dnsPolicy: ClusterFirstWithHostNet
+        hostNetwork: true # Allows to provide richer host metadata
+        terminationGracePeriodSeconds: 30
         volumes:
-        - name: varlibdockercontainers
-          hostPath:
-            path: /var/lib/docker/containers
-        - name: varlogcontainers
-          hostPath:
-            path: /var/log/containers
-        - name: varlogpods
-          hostPath:
-            path: /var/log/pods
         - hostPath:
             path: /sys/fs/cgroup
           name: cgroup
