@@ -125,5 +125,5 @@ spec:
               vars:
               - name: paths
                 value:
-#                - '/var/log/containers/*.log'
                 - '/var/lib/docker/containers/*/*.log'
+#                - '/var/log/containers/*.log'
