@@ -50,6 +50,8 @@ spec:
           value: dev
         - name: ELASTIC_APM_LOG_LEVEL
           value: DEBUG
+        - name: ELASTIC_APM_SECRET_TOKEN
+          value: testtoken1234567890
 #        - name: ELASTIC_APM_SECRET_TOKEN
 #          valueFrom:
 #            secretKeyRef:
