@@ -43,8 +43,8 @@ spec:
       version: latest
 #    - name: kubernetes
 #      version: 1.21.1
-#    - name: apm
-#      version: latest
+    - name: apm
+      version: latest
     - name: log
       version: latest
     xpack.fleet.agentPolicies:
