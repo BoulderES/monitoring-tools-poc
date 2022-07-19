@@ -76,7 +76,7 @@ spec:
 #            name: kubernetes
 #          name: kubernetes-1
       - name: Elastic Agent on ECK policy
-        id: eck-agent-apm
+        id: eck-agent
         namespace: default
         monitoring_enabled:
         - logs

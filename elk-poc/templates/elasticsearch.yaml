@@ -10,7 +10,7 @@ spec:
       - dns: elasticsearch.rancher-poc.unicc.org
   nodeSets:
   - name: master-nodes
-    count: 3
+    count: {{ .Values.master.replicas }}
     podTemplate:
       spec:
         initContainers:
@@ -41,10 +41,10 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: {{ .Values.persistence.master.size }}
-        storageClassName: longhorn
+            storage: {{ .Values.master.persistence.size }}
+        storageClassName: {{ .Values.master.persistence.storageClassName }}
   - name: data-nodes
-    count: 4
+    count: {{ .Values.data.replicas }}
     podTemplate:
       spec:
         initContainers:
@@ -75,5 +75,5 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: {{ .Values.persistence.data.size }}
-        storageClassName: {{ .Values.persistence.storageClassName }}
+            storage: {{ .Values.data.persistence.size }}
+        storageClassName: {{ .Values.data.persistence.storageClassName }}
