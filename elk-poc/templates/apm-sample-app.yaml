@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: petclinic
-  namespace: {{ .Values.namespace }}
+  namespace: elk-stack
   labels:
     app: petclinic
     service: petclinic
@@ -41,7 +41,7 @@ spec:
           name: elastic-apm-agent
         env:
         - name: ELASTIC_APM_SERVER_URL
-          value: "http://apm-server-apm-http.{{ .Values.namespace }}.svc.cluster.local:8200"
+          value: "http://apm-server-apm-http.monitoring-tools-poc.svc.cluster.local:8200"
         - name: ELASTIC_APM_SERVICE_NAME
           value: petclinic
         - name: ELASTIC_APM_APPLICATION_PACKAGES
@@ -50,6 +50,8 @@ spec:
           value: dev
         - name: ELASTIC_APM_LOG_LEVEL
           value: DEBUG
+#        - name: ELASTIC_APM_SECRET_TOKEN
+#          value: testtoken1234567890
         - name: ELASTIC_APM_SECRET_TOKEN
           valueFrom:
             secretKeyRef:
