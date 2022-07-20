@@ -19,7 +19,7 @@ elasticsearch:
       size: 2Gi
 
   data:
-    replicas: 1
+    replicas: 2
     persistence:
       storageClassName: longhorn
       size: 5Gi
