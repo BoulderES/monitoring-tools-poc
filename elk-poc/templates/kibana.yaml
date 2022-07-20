@@ -107,17 +107,17 @@ spec:
                 value:
                 - '/var/lib/docker/containers/*/*.log'
 #                - '/var/log/containers/*.log'
-        - package:
-            name: apm
-          name: apm-1
-          inputs:
-          - type: apm
-            enabled: true
-            vars:
-            - name: host
-              value: 0.0.0.0:8200
-            - name: url
-              value: http://apm.{{ .Values.namespace }}.svc.cluster.local:8200
+#        - package:
+#            name: apm
+#          name: apm-1
+#          inputs:
+#          - type: apm
+#            enabled: true
+#            vars:
+#            - name: host
+#              value: 0.0.0.0:8200
+#            - name: url
+#              value: http://apm.{{ .Values.namespace }}.svc.cluster.local:8200
 
 #      - name: Elastic APM Agent on ECK policy
 #        id: eck-agent-apm
