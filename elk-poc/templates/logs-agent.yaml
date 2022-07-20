@@ -7,7 +7,7 @@ spec:
   kibanaRef:
     name: kibana
   fleetServerRef:
-    name: fleet-server
+    name: fleet-server-custom
   mode: fleet
   daemonSet:
     podTemplate:
