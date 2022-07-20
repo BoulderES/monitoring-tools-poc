@@ -1,120 +1,120 @@
-#---
-#apiVersion: agent.k8s.elastic.co/v1alpha1
-#kind: Agent
-#metadata:
-#  name: elastic-agent-apm
-#spec:
-#  version: 8.3.2
-#  kibanaRef:
-#    name: kibana
-#  fleetServerRef:
-#    name: fleet-server
-#  mode: fleet
-#  deployment:
-#    replicas: 1
-#    podTemplate:
+---
+apiVersion: agent.k8s.elastic.co/v1alpha1
+kind: Agent
+metadata:
+  name: elastic-agent-fleet
+spec:
+  version: {{ .Values.version }}
+  kibanaRef:
+    name: kibana
+  fleetServerRef:
+    name: fleet-server
+  mode: fleet
+  deployment:
+    replicas: 1
+    podTemplate:
+      spec:
+        serviceAccountName: elastic-agent-fleet
+        hostNetwork: true
+        dnsPolicy: ClusterFirstWithHostNet
+        automountServiceAccountToken: true
+        securityContext:
+          runAsUser: 0
+#  http:
+#    service:
 #      spec:
-#        serviceAccountName: elastic-agent-apm
-#        hostNetwork: true
-#        dnsPolicy: ClusterFirstWithHostNet
-#        automountServiceAccountToken: true
-#        securityContext:
-#          runAsUser: 0
-##  http:
-##    service:
-##      spec:
-##        type: ClusterIP
-##    tls:
-##      selfSignedCertificate:
-##        disabled: true
-#
-#
-#---
-#apiVersion: v1
-#kind: Service
-#metadata:
-#  name: apm-elastic-agent
-#spec:
-#  selector:
-#    agent.k8s.elastic.co/name: elastic-agent-apm
-#  ports:
-#  - protocol: TCP
-#    port: 8200
-#---
-#apiVersion: v1
-#kind: ServiceAccount
-#metadata:
-#  name: elastic-agent-apm
-#---
-#apiVersion: rbac.authorization.k8s.io/v1
-#kind: ClusterRole
-#metadata:
-#  name: elastic-agent-apm
-#rules:
-#- apiGroups: [""]
-#  resources:
-#  - pods
-#  - nodes
-#  - namespaces
-#  - events
-#  - services
-#  - configmaps
-#  verbs:
-#  - get
-#  - watch
-#  - list
-#- apiGroups: ["coordination.k8s.io"]
-#  resources:
-#  - leases
-#  verbs:
-#  - get
-#  - create
-#  - update
-#- nonResourceURLs:
-#  - "/metrics"
-#  verbs:
-#  - get
-#- apiGroups: ["extensions"]
-#  resources:
-#    - replicasets
-#  verbs:
-#  - "get"
-#  - "list"
-#  - "watch"
-#- apiGroups:
-#  - "apps"
-#  resources:
-#  - statefulsets
-#  - deployments
-#  - replicasets
-#  verbs:
-#  - "get"
-#  - "list"
-#  - "watch"
-#- apiGroups:
-#  - ""
-#  resources:
-#  - nodes/stats
-#  verbs:
-#  - get
-#- apiGroups:
-#  - "batch"
-#  resources:
-#  - jobs
-#  verbs:
-#  - "get"
-#  - "list"
-#  - "watch"
-#---
-#apiVersion: rbac.authorization.k8s.io/v1
-#kind: ClusterRoleBinding
-#metadata:
-#  name: elastic-agent-apm
-#subjects:
-#- kind: ServiceAccount
-#  name: elastic-agent-apm
-#  namespace: monitoring-tools-poc
-#roleRef:
-#  kind: ClusterRole
-#  name: elastic-agent-apm
-#  apiGroup: rbac.authorization.k8s.io
+#        type: ClusterIP
+#    tls:
+#      selfSignedCertificate:
+#        disabled: true
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apm-elastic-agent
+spec:
+  selector:
+    agent.k8s.elastic.co/name: elastic-agent-fleet
+  ports:
+  - protocol: TCP
+    port: 8200
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: elastic-agent-fleet
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: elastic-agent-fleet
+rules:
+- apiGroups: [""]
+  resources:
+  - pods
+  - nodes
+  - namespaces
+  - events
+  - services
+  - configmaps
+  verbs:
+  - get
+  - watch
+  - list
+- apiGroups: ["coordination.k8s.io"]
+  resources:
+  - leases
+  verbs:
+  - get
+  - create
+  - update
+- nonResourceURLs:
+  - "/metrics"
+  verbs:
+  - get
+- apiGroups: ["extensions"]
+  resources:
+    - replicasets
+  verbs:
+  - "get"
+  - "list"
+  - "watch"
+- apiGroups:
+  - "apps"
+  resources:
+  - statefulsets
+  - deployments
+  - replicasets
+  verbs:
+  - "get"
+  - "list"
+  - "watch"
+- apiGroups:
+  - ""
+  resources:
+  - nodes/stats
+  verbs:
+  - get
+- apiGroups:
+  - "batch"
+  resources:
+  - jobs
+  verbs:
+  - "get"
+  - "list"
+  - "watch"
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: elastic-agent-fleet
+subjects:
+- kind: ServiceAccount
+  name: elastic-agent-fleet
+  namespace: {{ .Values.namespace }}
+roleRef:
+  kind: ClusterRole
+  name: elastic-agent-fleet
+  apiGroup: rbac.authorization.k8s.io

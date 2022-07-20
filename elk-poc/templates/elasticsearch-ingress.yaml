@@ -7,7 +7,7 @@ metadata:
   name: elasticsearch-ingress
 spec:
   rules:
-  - host: elasticsearch.rancher-poc.unicc.org
+  - host: {{ .Values.elasticsearch.base_url }}
     http:
       paths:
       - backend:

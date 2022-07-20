@@ -3,7 +3,7 @@
 #metadata:
 #  name: elastic-agent-logs
 #spec:
-#  version: 8.3.2
+#  version: {{ .Values.version }}
 #  kibanaRef:
 #    name: kibana
 #  fleetServerRef:
@@ -111,7 +111,7 @@
 #subjects:
 #- kind: ServiceAccount
 #  name: elastic-agent-logs
-#  namespace: monitoring-tools-poc
+#  namespace: {{ .Values.namespace }}
 #roleRef:
 #  kind: ClusterRole
 #  name: elastic-agent-logs

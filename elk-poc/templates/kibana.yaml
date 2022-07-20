@@ -3,7 +3,7 @@ kind: Kibana
 metadata:
   name: kibana
 spec:
-  version: 8.3.2
+  version: {{ .Values.version }}
   count: {{ .Values.kibana.replicas }}
   elasticsearchRef:
     name: elasticsearch
@@ -14,7 +14,7 @@ spec:
     tls:
       selfSignedCertificate:
         subjectAltNames:
-        - dns: kibana-kb-http.monitoring-tools-poc.svc.cluster.local
+        - dns: kibana-kb-http.{{ .Values.namespace }}.svc.cluster.local
   podTemplate:
     spec:
       containers:
@@ -32,8 +32,8 @@ spec:
   config:
     server.publicBaseUrl: https://{{ .Values.kibana.base_url }}
     xpack.fleet.registryProxyUrl: http://proxy.unicc.org:80
-    xpack.fleet.agents.elasticsearch.hosts: ["https://elasticsearch-es-http.monitoring-tools-poc.svc:9200"]
-    xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-agent-http.monitoring-tools-poc.svc:8220"]
+    xpack.fleet.agents.elasticsearch.hosts: ["https://elasticsearch-es-http.{{ .Values.namespace }}.svc:9200"]
+    xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-agent-http.{{ .Values.namespace }}.svc:8220"]
     xpack.fleet.packages:
     - name: system
       version: latest
@@ -41,8 +41,8 @@ spec:
       version: latest
     - name: fleet_server
       version: latest
-#    - name: kubernetes
-#      version: 1.21.1
+    - name: kubernetes
+      version: 1.21.1
     - name: apm
       version: latest
     - name: log
@@ -60,64 +60,64 @@ spec:
           id: fleet_server-1
           package:
             name: fleet_server
-#      - name: Elastic LOGS Agent on ECK policy
-#        id: eck-agent-logs
-#        namespace: default
-#        monitoring_enabled:
-#        - logs
-#        - metrics
-#        unenroll_timeout: 900
-#        is_default: true
-#        package_policies:
-#        - name: elastic_agent-1
-#          id: elastic_agent-1
-#          package:
-#            name: elastic_agent
-#        - name: system-1
-#          id: system-1
-#          package:
-#            name: system
-#          inputs:
-#            - type: system/metrics
-#              enabled: true
-#              vars:
-#                - name: system.hostfs
-#                  value: /hostfs
-#              streams:
-#                - data_stream:
-#                    dataset: system.core
-#                  enabled: true
-#                  vars:
-#                    - name: period
-#                      value: 20s
-#            - type: winlog
-#              enabled: false
-#        - package:
-#            name: log
-#          name: log-1
-#          inputs:
-#          - type: logfile
-#            enabled: true
-#            streams:
-#            - data_stream:
-#                dataset: log.log
-#              enabled: true
-#              vars:
-#              - name: paths
-#                value:
-#                - '/var/lib/docker/containers/*/*.log'
-##                - '/var/log/containers/*.log'
-#        - package:
-#            name: apm
-#          name: apm-1
-#          inputs:
-#          - type: apm
-#            enabled: true
-#            vars:
-#            - name: host
-#              value: 0.0.0.0:8200
-#            - name: url
-#              value: http://apm.monitoring-tools-poc.svc.cluster.local:8200
+      - name: Elastic LOGS Agent on ECK policy
+        id: eck-agent-logs
+        namespace: default
+        monitoring_enabled:
+        - logs
+        - metrics
+        unenroll_timeout: 900
+        is_default: true
+        package_policies:
+        - name: elastic_agent-1
+          id: elastic_agent-1
+          package:
+            name: elastic_agent
+        - name: system-1
+          id: system-1
+          package:
+            name: system
+          inputs:
+            - type: system/metrics
+              enabled: true
+              vars:
+                - name: system.hostfs
+                  value: /hostfs
+              streams:
+                - data_stream:
+                    dataset: system.core
+                  enabled: true
+                  vars:
+                    - name: period
+                      value: 20s
+            - type: winlog
+              enabled: false
+        - package:
+            name: log
+          name: log-1
+          inputs:
+          - type: logfile
+            enabled: true
+            streams:
+            - data_stream:
+                dataset: log.log
+              enabled: true
+              vars:
+              - name: paths
+                value:
+                - '/var/lib/docker/containers/*/*.log'
+#                - '/var/log/containers/*.log'
+        - package:
+            name: apm
+          name: apm-1
+          inputs:
+          - type: apm
+            enabled: true
+            vars:
+            - name: host
+              value: 0.0.0.0:8200
+            - name: url
+              value: http://apm.{{ .Values.namespace }}.svc.cluster.local:8200
 
 #      - name: Elastic APM Agent on ECK policy
 #        id: eck-agent-apm
@@ -144,4 +144,4 @@ spec:
 #            - name: host
 #              value: 0.0.0.0:8200
 #            - name: url
-#              value: http://apm.monitoring-tools-poc.svc.cluster.local:8200
+#              value: http://apm.{{ .Values.namespace }}.svc.cluster.local:8200

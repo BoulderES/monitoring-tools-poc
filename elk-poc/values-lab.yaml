@@ -1,18 +1,23 @@
 
+version: 8.3.2
+namespace: elk-stack
 kibana:
-  base_url: kibana.rancher-poc.unicc.org
+  base_url: kibana-fleet.rancher-poc.unicc.org
   replicas: 1
 
+
+
 elasticsearch:
+  base_url: elasticsearch-fleet.rancher-poc.unicc.org
   master:
-    replicas: 3
+    replicas: 1
+    persistence:
+      storageClassName: longhorn
+      size: 2Gi
+
+  data:
+    replicas: 1
     persistence:
       storageClassName: longhorn
       size: 5Gi
-
-  data:
-    replicas: 2
-    persistence:
-      storageClassName: longhorn
-      size: 10Gi
 

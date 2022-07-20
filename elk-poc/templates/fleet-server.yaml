@@ -4,7 +4,7 @@
 #metadata:
 #  name: fleet-server
 #spec:
-#  version: 8.3.2
+#  version: {{ .Values.version }}
 #  kibanaRef:
 #    name: kibana
 #  elasticsearchRefs:
@@ -74,7 +74,7 @@
 #subjects:
 #- kind: ServiceAccount
 #  name: fleet-server
-#  namespace: monitoring-tools-poc
+#  namespace: {{ .Values.namespace }}
 #roleRef:
 #  kind: ClusterRole
 #  name: fleet-server
