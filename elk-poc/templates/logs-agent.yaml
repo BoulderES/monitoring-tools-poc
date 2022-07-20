@@ -1,7 +1,7 @@
 apiVersion: agent.k8s.elastic.co/v1alpha1
 kind: Agent
 metadata:
-  name: elastic-agent-logs
+  name: elastic-agent-custom
 spec:
   version: {{ .Values.version }}
   kibanaRef:
@@ -12,7 +12,7 @@ spec:
   daemonSet:
     podTemplate:
       spec:
-        serviceAccountName: elastic-agent-logs
+        serviceAccountName: elastic-agent-custom
         automountServiceAccountToken: true
         securityContext:
           runAsUser: 0
@@ -42,12 +42,12 @@ spec:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: elastic-agent-logs
+  name: elastic-agent-custom
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: elastic-agent-logs
+  name: elastic-agent-custom
 rules:
 - apiGroups: [""]
   resources:
@@ -107,12 +107,12 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: elastic-agent-logs
+  name: elastic-agent-custom
 subjects:
 - kind: ServiceAccount
-  name: elastic-agent-logs
+  name: elastic-agent-custom
   namespace: {{ .Values.namespace }}
 roleRef:
   kind: ClusterRole
-  name: elastic-agent-logs
+  name: elastic-agent-custom
   apiGroup: rbac.authorization.k8s.io
