@@ -25,6 +25,12 @@ spec:
             name: varlogcontainers
           - mountPath: /var/log/pods
             name: varlogpods
+          - mountPath: /hostfs/sys/fs/cgroup
+            name: cgroup
+          - mountPath: /var/run/docker.sock
+            name: dockersock
+          - mountPath: /hostfs/proc
+            name: proc
         volumes:
         - name: varlibdockercontainers
           hostPath:
@@ -35,6 +41,15 @@ spec:
         - name: varlogpods
           hostPath:
             path: /var/log/pods
+        - hostPath:
+            path: /sys/fs/cgroup
+          name: cgroup
+        - hostPath:
+            path: /var/run/docker.sock
+          name: dockersock
+        - hostPath:
+            path: /proc
+          name: proc
 
 
 
