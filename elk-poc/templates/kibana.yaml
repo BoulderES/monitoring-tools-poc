@@ -106,10 +106,10 @@ spec:
               - name: paths
                 value:
                 - '/var/lib/docker/containers/*/*.log'
-#                - '/var/log/containers/*.log'
-        - package:
+        - name: kubernetes-1
+          package:
             name: kubernetes
-          name: kubernetes-1
+
 #        - package:
 #            name: apm
 #          name: apm-1

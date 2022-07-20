@@ -7,7 +7,7 @@ metadata:
   name: kibana-ingress
 spec:
   rules:
-  - host: {{ .Values.kibana.base_url1 }}
+  - host: {{ .Values.kibana.base_url }}
     http:
       paths:
       - backend:
