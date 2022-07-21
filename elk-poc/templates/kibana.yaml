@@ -109,28 +109,6 @@ spec:
         - name: kubernetes-1
           package:
             name: kubernetes
-          inputs:
-            - type: system/metrics
-              enabled: true
-              period: 10s
-              metricsets:
-              - cpu
-              - load
-              - memory
-              - network
-              - process
-              - process_summary
-              - socket_summary
-              - filesystem
-              - fsstat
-              - uptime
-              - service
-              process:
-                include_top_n:
-                  by_cpu: 5
-                  by_memory: 5
-              processes:
-              - .*
           processors:
           - add_cloud_metadata: {}
           - add_host_metadata: {}

@@ -15,7 +15,7 @@ spec:
         serviceAccountName: elastic-agent-custom
         automountServiceAccountToken: true
         dnsPolicy: ClusterFirstWithHostNet
-        hostNetwork: true # Allows to provide richer host metadata
+#        hostNetwork: true # Allows to provide richer host metadata
         securityContext:
           runAsUser: 0
         containers:
