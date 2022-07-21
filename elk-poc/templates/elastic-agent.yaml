@@ -113,7 +113,7 @@
 #subjects:
 #- kind: ServiceAccount
 #  name: elastic-agent-fleet
-#  namespace: {{ .Values.namespace }}
+#  namespace: {{ .Release.namespace }}
 #roleRef:
 #  kind: ClusterRole
 #  name: elastic-agent-fleet

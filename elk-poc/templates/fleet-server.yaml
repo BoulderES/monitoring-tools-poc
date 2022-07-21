@@ -63,7 +63,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: fleet-server-custom
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Release.namespace }}
 roleRef:
   kind: ClusterRole
   name: fleet-server-custom
