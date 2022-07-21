@@ -121,6 +121,18 @@ spec:
                       https://${KUBERNETES_SERVICE_HOST}:${env.KUBERNETES_SERVICE_PORT}
                   - name: paths
                     value: '/var/log/containers/*${kubernetes.container.id}.log'
+
+
+
+
+              - data_stream:
+                  dataset: kubernetes.state_node
+                  type: metrics
+                vars:
+                  - name: hosts
+                    value: "kube-state-metrics:8080"
+                  - name: metricsets
+                    value: "state_node"
             type: kubernetes/metrics
 #          inputs:
 #            - type: system/metrics
