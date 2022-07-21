@@ -109,9 +109,6 @@ spec:
         - name: kubernetes-1
           package:
             name: kubernetes
-          processors:
-          - add_cloud_metadata: {}
-          - add_host_metadata: {}
 #        - package:
 #            name: apm
 #          name: apm-1
