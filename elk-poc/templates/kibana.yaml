@@ -106,9 +106,9 @@ spec:
               - name: paths
                 value:
                 - '/var/lib/docker/containers/*/*.log'
-#        - name: kubernetes-1
-#          package:
-#            name: kubernetes
+        - name: kubernetes-1
+          package:
+            name: kubernetes
 #          inputs:
 #          - enabled: true
 #            streams:
