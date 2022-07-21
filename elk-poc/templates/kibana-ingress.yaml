@@ -7,7 +7,17 @@ metadata:
   name: kibana-ingress
 spec:
   rules:
-  - host: "kibana-{{ .Release.Namespace }}.{{ .Values.base_url }}"
+  - host: kibana-{{ .Release.Namespace }}.{{ .Values.base_url }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: kibana-kb-http
+            port:
+              number: 5601
+        path: /
+        pathType: ImplementationSpecific
+  - host: kibana.{{ .Values.base_url }}
     http:
       paths:
       - backend:

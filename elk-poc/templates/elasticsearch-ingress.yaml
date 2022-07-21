@@ -17,3 +17,13 @@ spec:
               number: 9200
         path: /
         pathType: ImplementationSpecific
+  - host: elasticsearch.{{ .Values.base_url }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: elasticsearch-es-http
+            port:
+              number: 9200
+        path: /
+        pathType: ImplementationSpecific
