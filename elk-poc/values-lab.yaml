@@ -5,15 +5,13 @@ namespace: elk-stack
 petclinic:
   nodeport: 30002
 kibana:
-  base_url: kibana-fleet.rancher-poc.unicc.org
-  base_url2: kibana.rancher-poc.unicc.org
+  base_url: kibana-{{ .Release.namespace }}.rancher-poc.unicc.org
   replicas: 1
 
 
 
 elasticsearch:
-  base_url1: elasticsearch-fleet.rancher-poc.unicc.org
-  base_url2: elasticsearch.rancher-poc.unicc.org
+  base_url1: elasticsearch-{{ .Release.namespace }}.rancher-poc.unicc.org
   master:
     replicas: 1
     persistence:

@@ -17,13 +17,3 @@ spec:
               number: 5601
         path: /
         pathType: ImplementationSpecific
-  - host: {{ .Values.kibana.base_url2 }}
-    http:
-      paths:
-      - backend:
-          service:
-            name: kibana-kb-http
-            port:
-              number: 5601
-        path: /
-        pathType: ImplementationSpecific

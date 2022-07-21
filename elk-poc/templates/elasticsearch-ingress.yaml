@@ -7,17 +7,7 @@ metadata:
   name: elasticsearch-ingress
 spec:
   rules:
-  - host: {{ .Values.elasticsearch.base_url1 }}
-    http:
-      paths:
-      - backend:
-          service:
-            name: elasticsearch-es-http
-            port:
-              number: 9200
-        path: /
-        pathType: ImplementationSpecific
-  - host: {{ .Values.elasticsearch.base_url2 }}
+  - host: {{ .Values.elasticsearch.base_url }}
     http:
       paths:
       - backend:
