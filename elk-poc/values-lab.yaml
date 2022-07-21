@@ -18,11 +18,11 @@ elasticsearch:
     replicas: 1
     persistence:
       storageClassName: longhorn
-      size: 2Gi
+      size: 5Gi
 
   data:
     replicas: 2
     persistence:
       storageClassName: longhorn
-      size: 5Gi
+      size: 25Gi
 
