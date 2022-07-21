@@ -14,7 +14,7 @@ spec:
     tls:
       selfSignedCertificate:
         subjectAltNames:
-        - dns: kibana-kb-http.{{ .Release.namespace }}.svc.cluster.local
+        - dns: kibana-kb-http.{{ .Release.Namespace }}.svc.cluster.local
   podTemplate:
     spec:
       containers:
@@ -30,10 +30,10 @@ spec:
             memory: 2Gi
             cpu: 2
   config:
-    server.publicBaseUrl: https://kibana-{{ .Release.namespace }}.{{ .Values.kibana.base_url }}
+    server.publicBaseUrl: https://kibana-{{ .Release.Namespace }}.{{ .Values.kibana.base_url }}
     xpack.fleet.registryProxyUrl: http://proxy.unicc.org:80
-    xpack.fleet.agents.elasticsearch.hosts: ["https://elasticsearch-es-http.{{ .Release.namespace }}.svc:9200"]
-    xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-custom-agent-http.{{ .Release.namespace }}.svc:8220"]
+    xpack.fleet.agents.elasticsearch.hosts: ["https://elasticsearch-es-http.{{ .Release.Namespace }}.svc:9200"]
+    xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-custom-agent-http.{{ .Release.Namespace }}.svc:8220"]
     xpack.fleet.packages:
     - name: system
       version: latest

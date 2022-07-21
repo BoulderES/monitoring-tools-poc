@@ -138,7 +138,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: elastic-agent-custom
-  namespace: {{ .Release.namespace }}
+  namespace: {{ .Release.Namespace }}
 roleRef:
   kind: ClusterRole
   name: elastic-agent-custom
