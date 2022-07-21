@@ -1,17 +1,16 @@
 
 version: 8.3.2
 namespace: elk-stack
+base_url: rancher-poc.unicc.org
 
 petclinic:
   nodeport: 30002
 kibana:
-  base_url: "kibana-{{ .Release.namespace }}.rancher-poc.unicc.org"
   replicas: 1
 
 
 
 elasticsearch:
-  base_url1: "elasticsearch-{{ .Release.namespace }}.rancher-poc.unicc.org"
   master:
     replicas: 1
     persistence:

@@ -30,7 +30,7 @@ spec:
             memory: 2Gi
             cpu: 2
   config:
-    server.publicBaseUrl: https://{{ .Values.kibana.base_url }}
+    server.publicBaseUrl: https://kibana-{{ .Release.namespace }}.{{ .Values.kibana.base_url }}
     xpack.fleet.registryProxyUrl: http://proxy.unicc.org:80
     xpack.fleet.agents.elasticsearch.hosts: ["https://elasticsearch-es-http.{{ .Release.namespace }}.svc:9200"]
     xpack.fleet.agents.fleet_server.hosts: ["https://fleet-server-custom-agent-http.{{ .Release.namespace }}.svc:8220"]
